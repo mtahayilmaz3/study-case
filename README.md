@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Study Case 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Kullanılan Teknolojiler
 
-## Available Scripts
+- **Frontend:** React, Reactstrap, React Router DOM  
+- **Backend:** Node.js (Express.js)  
+- **Veritabanı:** MySQL  
+- **Stil:** Bootstrap 5
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Kurulum Adımları
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Veritabanı Oluşturma
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sql
+CREATE DATABASE study_case;
 
-### `npm test`
+USE study_case;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+CREATE TABLE texts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  text VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
 
-### `npm run build`
+### 2. Veritabanı Bağlantı Bilgileri (`backend/index.js` içinde)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'studycase',
+  password: 'studycase123',
+  database: 'study_case'
+});
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##  Uygulamanın Çalıştırılması
 
-### `npm run eject`
+### 3. Backend'i Başlat
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+cd study-case
+cd backend
+node index.js
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4. Frontend'i Başlat
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd study-case
+npm install
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+##  Proje Yapısı
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+study-case/
+├── backend/
+│   ├── index.js
+│   ├── package.json
+│   └── ...
+├── public/
+├── src/
+│   ├── App.js
+│   ├── MainApp.js
+│   ├── TextList.js
+│   ├── ...
+├── README.md
+├── package.json
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
